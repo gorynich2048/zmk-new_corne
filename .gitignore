@@ -1,5 +1,6 @@
-build/
-zmk/
-modules/
-tools/
-.west/
+/.west
+/modules
+/zephyr
+/zmk
+/build
+/tools
