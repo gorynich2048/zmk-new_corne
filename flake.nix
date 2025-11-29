@@ -33,7 +33,7 @@
 
         src = nixpkgs.lib.sourceFilesBySuffices self [ ".board" ".cmake" ".conf" ".defconfig" ".dts" ".dtsi" ".json" ".keymap" ".overlay" ".shield" ".yml" "_defconfig" ];
 
-        board = "eyelash_corne_left";
+        board = "eyelash_corne_right";
         shield = "nice_view";
 
         zephyrDepsHash = "sha256-5DSFrlCOuJLHFiO1JLERirjv1+2wRaQqjbwO4784+lU=";
@@ -45,8 +45,8 @@
         };
       };
 
-      flash_left = zmk-nix.packages.${system}.flash.override { inherit firmware_left; };
-      flash_right = zmk-nix.packages.${system}.flash.override { inherit firmware_right; };
+      flash_left = zmk-nix.packages.${system}.flash.override { firmware = firmware_left; };
+      flash_right = zmk-nix.packages.${system}.flash.override { firmware = firmware_right; };
       update = zmk-nix.packages.${system}.update;
     });
 

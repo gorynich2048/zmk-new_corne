@@ -76,10 +76,10 @@
         base_layer {
             display-name = "BASE";
             bindings = <
-&none  &sk LCTRL  &kp C  &kp D  &kp L      &kp V                &kp UP                &kp Q  &kp O  &kp U  &kp F  &none  &none
-&none  &kp G      &kp S  &kp T  &kp H      &kp K      &kp LEFT  &kp ENTER  &kp RIGHT  &kp J  &kp E  &kp I  &kp N  &kp P  &none
-&none  &sk LGUI   &kp B  &kp M  &kp R      &kp X      &none     &kp DOWN              &kp Z  &kp A  &kp Y  &kp W  &none  &none
-                         &none  &kp SPACE  &sk LSHFT                                  &none  &sl 2  &sl 1
+&none  &sk LALT  &kp C  &kp D      &kp L      &kp V                &kp UP                &kp Q  &kp O  &kp U  &kp F  &none  &none
+&none  &kp G     &kp S  &kp T      &kp H      &kp K      &kp LEFT  &kp ENTER  &kp RIGHT  &kp J  &kp E  &kp I  &kp N  &kp P  &none
+&none  &sk LGUI  &kp B  &kp M      &kp R      &kp X      &none     &kp DOWN              &kp Z  &kp A  &kp Y  &kp W  &none  &none
+                        &sk LCTRL  &kp SPACE  &sk LSHFT                                  &sl 2  &sl 1  &none
             >;
 
              sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
@@ -88,9 +88,9 @@
         num_layer {
             display-name = "NUM";
             bindings = <
-&none  &none   &kp N7  &kp N8   &kp N9                      &mmv MOVE_UP                     &kp LC(BSPC)  &kp LEFT  &kp RIGHT      &kp TAB  &none  &none
-&none  &kp N0  &kp N4  &kp N5   &kp N6      &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &kp BSPC      &kp DOWN  &kp UP         &kp RET  &none  &none
-&none  &none   &kp N1  &kp N2   &kp N3      &none           &mmv MOVE_DOWN                   &kp LS(TAB)   &kp ESC   &kp LS(RIGHT)  &none    &none  &none
+&none  &none   &kp N7  &kp N8   &kp N9     &none                  &mmv MOVE_UP                     &kp LC(BSPC)  &kp LEFT  &kp RIGHT      &kp TAB  &none  &none
+&none  &kp N0  &kp N4  &kp N5   &kp N6     &none  &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &kp BSPC      &kp DOWN  &kp UP         &kp RET  &none  &none
+&none  &none   &kp N1  &kp N2   &kp N3     &none  &none           &mmv MOVE_DOWN                   &kp LS(TAB)   &kp ESC   &kp LS(RIGHT)  &none    &none  &none
                &none   &kp DOT  &sk LSHFT                                                    &none         &none     &none
             >;
 
