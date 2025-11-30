@@ -103,7 +103,7 @@
 &none  &none       &kp FSLH   &kp LS(N9)    &kp LS(N0)     &kp LS(BSLH)                   &mmv MOVE_UP                     &kp LS(SINGLE_QUOTE)  &kp LS(LBKT)   &kp LS(RBKT)  &kp LS(N8)     &none         &none
 &none  &kp LS(N1)  &kp EQUAL  &kp LS(SEMI)  &kp DOT        &kp LS(N7)     &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &kp SQT               &kp COMMA      &kp SEMI      &kp LS(N5)     &kp LS(FSLH)  &none
 &none  &none       &kp MINUS  &kp LBKT      &kp RBKT       &kp LS(GRAVE)  &none           &mmv MOVE_DOWN                   &kp GRAVE             &kp LS(COMMA)  &kp LS(DOT)   &kp LS(EQUAL)  &none         &none
-                              &kp LS(N6)    &kp LS(MINUS)  &kp LS(N3)                                                      &kp LS(N4)            &kp LS(N2)     &kp BSLH
+                              &kp LS(N6)    &kp LS(MINUS)  &kp LS(N4)                                                      &kp LS(N3)            &kp LS(N2)     &kp BSLH
             >;
 
             sensor-bindings = <&scroll_encoder>;
