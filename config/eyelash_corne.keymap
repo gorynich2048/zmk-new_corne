@@ -1,5 +1,5 @@
 #define ZMK_POINTING_DEFAULT_MOVE_VAL 1200  // 600
-#define ZMK_POINTING_DEFAULT_SCRL_VAL 25   // 10
+#define ZMK_POINTING_DEFAULT_SCRL_VAL 200   // 10
 
 #include <input/processors.dtsi>
 #include <zephyr/dt-bindings/input/input-event-codes.h>
@@ -15,15 +15,15 @@
 &msc_input_listener { input-processors = <&zip_scroll_scaler 2 1>; };
 
 &msc {
-    acceleration-exponent = <1>;      // 0
-    time-to-max-speed-ms = <100>;       // 300
-    delay-ms = <0>;                   // 0
+    acceleration-exponent = <1>;
+    time-to-max-speed-ms = <100>;
+    delay-ms = <0>;
 };
 
 &mmv {
-    time-to-max-speed-ms = <500>;
     acceleration-exponent = <1>;
-    trigger-period-ms = <16>;
+    time-to-max-speed-ms = <500>;
+    trigger-period-ms = <8>;
 };
 
 &soft_off { hold-time-ms = <2000>; };
@@ -36,6 +36,11 @@
 &sl {
     release-after-ms = <200>;
 };
+
+#define LAYER_BASE 0
+#define LAYER_NUM 1
+#define LAYER_SYM 2
+#define LAYER_MOUSE 3
 
 / {
     behaviors {
@@ -76,10 +81,10 @@
         base_layer {
             display-name = "BASE";
             bindings = <
-&none  &sk LALT  &kp C  &kp D      &kp L      &kp V                &kp UP                &kp Q  &kp O  &kp U  &kp F  &none  &none
-&none  &kp G     &kp S  &kp T      &kp H      &kp K      &kp LEFT  &kp ENTER  &kp RIGHT  &kp J  &kp E  &kp I  &kp N  &kp P  &none
-&none  &sk LGUI  &kp B  &kp M      &kp R      &kp X      &none     &kp DOWN              &kp Z  &kp A  &kp Y  &kp W  &none  &none
-                        &sk LCTRL  &kp SPACE  &sk LSHFT                                  &sl 2  &sl 1  &none
+&none  &sk LALT  &kp C  &kp D      &kp L      &kp V                     &mmv MOVE_UP                &kp Q          &kp O          &kp U  &kp F  &none  &none
+&none  &kp G     &kp S  &kp T      &kp H      &kp K      &mmv MOVE_LEFT &mkp LCLK  &mmv MOVE_RIGHT  &kp J          &kp E          &kp I  &kp N  &kp P  &none
+&none  &sk LGUI  &kp B  &kp M      &kp R      &kp X      &none          &mmv MOVE_DOWN              &kp Z          &kp A          &kp Y  &kp W  &none  &none
+                        &sk LCTRL  &kp SPACE  &sk LSHFT                                             &sl LAYER_SYM  &sl LAYER_NUM  &sl LAYER_MOUSE
             >;
 
              sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOLUME_DOWN>;
@@ -91,7 +96,7 @@
 &none  &none   &kp N7  &kp N8   &kp N9     &none                  &mmv MOVE_UP                     &kp LC(BSPC)  &kp LEFT  &kp RIGHT      &kp TAB  &none  &none
 &none  &kp N0  &kp N4  &kp N5   &kp N6     &none  &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &kp BSPC      &kp DOWN  &kp UP         &kp RET  &none  &none
 &none  &none   &kp N1  &kp N2   &kp N3     &none  &none           &mmv MOVE_DOWN                   &kp LS(TAB)   &kp ESC   &kp LS(RIGHT)  &none    &none  &none
-               &none   &kp DOT  &sk LSHFT                                                    &none         &none     &none
+               &none   &kp DOT  &sk LSHFT                                                          &none         &none     &none
             >;
 
             sensor-bindings = <&scroll_encoder>;
@@ -104,6 +109,18 @@
 &none  &kp LS(N1)  &kp EQUAL  &kp LS(SEMI)  &kp DOT        &kp LS(N7)     &mmv MOVE_LEFT  &mkp LCLK       &mmv MOVE_RIGHT  &kp SQT               &kp COMMA      &kp SEMI      &kp LS(N5)     &kp LS(FSLH)  &none
 &none  &none       &kp MINUS  &kp LBKT      &kp RBKT       &kp LS(GRAVE)  &none           &mmv MOVE_DOWN                   &kp GRAVE             &kp LS(COMMA)  &kp LS(DOT)   &kp LS(EQUAL)  &none         &none
                               &kp LS(N6)    &kp LS(MINUS)  &kp LS(N3)                                                      &kp LS(N4)            &kp LS(N2)     &kp BSLH
+            >;
+
+            sensor-bindings = <&scroll_encoder>;
+        };
+
+        mouse_layer {
+            display-name = "MOUSE";
+            bindings = <
+&none  &none  &none  &none  &none  &none                 &mmv MOVE_UP                &none  &mmv MOVE_LEFT  &mmv MOVE_RIGHT  &mkp RCLK  &none  &none
+&none  &none  &none  &none  &none  &none  &mmv MOVE_LEFT &mkp LCLK  &mmv MOVE_RIGHT  &none  &mmv MOVE_DOWN  &mmv MOVE_UP     &mkp LCLK  &none  &none
+&none  &none  &none  &none  &none  &none  &none          &mmv MOVE_DOWN              &none  &msc SCRL_DOWN  &msc SCRL_UP     &mkp MCLK  &none  &none
+                     &none  &none  &none                                             &none  &none           &none
             >;
 
             sensor-bindings = <&scroll_encoder>;
